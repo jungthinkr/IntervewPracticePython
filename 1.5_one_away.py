@@ -12,17 +12,16 @@ pale, bale -> true
 pale, bake -> false
 """
 def isoneoperationaway(a, b):
-  if a == b:
-    return True 
-  m = 0
-  l = max(len(a), len(b))
-
-  for i in range(l):
-    if i < len(a):
-      m ^= ord(a[i])
-    if i < len(b):
-      m ^= ord(b[i])
-  return chr(m).isalpha()
+  return len(set(a)-set(b)) <= 1
+  
 
 if __name__ == '__main__':
-  print("isoneoperationaway 'pale', 'ale' {0}".format(isoneoperationaway('pale', 'ple')))
+  print("isoneoperationaway 'pale', 'pale' {0}".format(isoneoperationaway('pale', 'pale')))
+  print("isoneoperationaway 'pale', 'ale' {0}".format(isoneoperationaway('pale', 'ale')))
+  print("isoneoperationaway 'pales', 'pale' {0}".format(isoneoperationaway('pales', 'pale')))
+  print("isoneoperationaway 'pale', 'bale' {0}".format(isoneoperationaway('pale', 'bale')))
+  print("isoneoperationaway 'pale', 'bake' {0}".format(isoneoperationaway('pale', 'bake')))
+
+  
+  
+  
