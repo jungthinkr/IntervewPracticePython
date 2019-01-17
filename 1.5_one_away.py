@@ -12,11 +12,11 @@ pale, bale -> true
 pale, bake -> false
 """
 def isoneoperationaway(a, b):
-  return len(set(a)-set(b)) <= 1
+  return len(set(a)-set(b)) <= 1 and len(set(b)-set(a)) <= 1
   
 
 if __name__ == '__main__':
-  print("isoneoperationaway 'pale', 'pale' {0}".format(isoneoperationaway('pale', 'pale')))
+  print("isoneoperationaway 'le', 'pale' {0}".format(isoneoperationaway('le', 'pale')))
   print("isoneoperationaway 'pale', 'ale' {0}".format(isoneoperationaway('pale', 'ale')))
   print("isoneoperationaway 'pales', 'pale' {0}".format(isoneoperationaway('pales', 'pale')))
   print("isoneoperationaway 'pale', 'bale' {0}".format(isoneoperationaway('pale', 'bale')))
