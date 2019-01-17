@@ -11,9 +11,26 @@ pales, pale -> true
 pale, bale -> true
 pale, bake -> false
 """
+
 def isoneoperationaway(a, b):
-  return len(set(a)-set(b)) <= 1 and len(set(b)-set(a)) <= 1
+  l = max(len(a), len(b))
+  c = 0 
+  for i in range(l):
+    if i < len(a):
+      c ^= ord(a[i])
+    if i < len(b):
+      c ^= ord(b[i])
   
+  if chr(c).isalpha():
+    return True
+
+  #assume same length now
+  for i in range(l):
+    arrA = list(a)
+    arrB = list(b)
+    arrA[i] = arrB[i]
+    return arrA == arrB
+  return True
 
 if __name__ == '__main__':
   print("isoneoperationaway 'le', 'pale' {0}".format(isoneoperationaway('le', 'pale')))
