@@ -14,23 +14,22 @@ pale, bake -> false
 
 def isoneoperationaway(a, b):
   l = max(len(a), len(b))
-  c = 0 
-  for i in range(l):
-    if i < len(a):
-      c ^= ord(a[i])
-    if i < len(b):
-      c ^= ord(b[i])
-  
-  if chr(c).isalpha():
-    return True
 
-  #assume same length now
-  for i in range(l):
-    arrA = list(a)
-    arrB = list(b)
-    arrA[i] = arrB[i]
-    return arrA == arrB
-  return True
+  if len(a) == len(b):
+    for i in range(l):
+      if a[i] != b[i]:
+        arrA = list(a)
+        arrB = list(b)
+        arrA[i] = arrB[i]
+        return arrA == arrB
+  else:
+    c = 0 
+    for i in range(l):
+      if i < len(a):
+        c ^= ord(a[i])
+      if i < len(b):
+        c ^= ord(b[i])
+    return chr(c).isalpha()
 
 if __name__ == '__main__':
   print("isoneoperationaway 'le', 'pale' {0}".format(isoneoperationaway('le', 'pale')))
@@ -38,7 +37,9 @@ if __name__ == '__main__':
   print("isoneoperationaway 'pales', 'pale' {0}".format(isoneoperationaway('pales', 'pale')))
   print("isoneoperationaway 'pale', 'bale' {0}".format(isoneoperationaway('pale', 'bale')))
   print("isoneoperationaway 'pale', 'bake' {0}".format(isoneoperationaway('pale', 'bake')))
-
-  
+  print("... 'california', 'nevada' {0}".format(isoneoperationaway('california', 'nevada')))
+  print("... 'a', 'aaaaa' {0}".format(isoneoperationaway('a', 'aaaaa')))
+ 
+ 
   
   
