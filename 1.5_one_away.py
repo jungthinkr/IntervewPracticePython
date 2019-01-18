@@ -14,6 +14,8 @@ pale, bake -> false
 
 def isoneoperationaway(a, b):
   l = max(len(a), len(b))
+  if a == b:
+    return True
 
   if len(a) == len(b):
     for i in range(l):
@@ -39,7 +41,7 @@ if __name__ == '__main__':
   print("isoneoperationaway 'pale', 'bake' {0}".format(isoneoperationaway('pale', 'bake')))
   print("... 'california', 'nevada' {0}".format(isoneoperationaway('california', 'nevada')))
   print("... 'a', 'aaaaa' {0}".format(isoneoperationaway('a', 'aaaaa')))
- 
+  print("... 'pale', 'pale' {0}".format(isoneoperationaway('pale', 'pale')))
  
   
   
