@@ -35,7 +35,7 @@ def deleteMiddle(head):
 
     
 if __name__ == '__main__':
-  arr = [1,2,3,4,5,6]
+  arr = [1,2,3,4,5]
   head = Node(arr[0])
   curr = head
   
