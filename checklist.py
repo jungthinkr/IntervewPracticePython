@@ -1,5 +1,6 @@
 """
 [] Tries
+[] Min/Max Heap
 [] Merge Sort
 [] Quick Sort
 [] Dynammic programming
