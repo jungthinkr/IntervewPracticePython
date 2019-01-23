@@ -1,4 +1,5 @@
 class Stack:
+  def __init__(self, n = 10):
   arr = []
 
   def push(self, x):

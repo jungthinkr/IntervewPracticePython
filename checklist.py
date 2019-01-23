@@ -4,6 +4,7 @@
 [] Merge Sort
 [] Quick Sort
 [] Dynammic programming
+[] A*
 [] Dijkstra's algorithmn
 [] Topological Sort
 """
