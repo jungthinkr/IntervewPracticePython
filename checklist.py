@@ -1,5 +1,6 @@
 """
 [] Tries
+  - prefix tree
 [] Min/Max Heap
 [] Merge Sort
 [] Quick Sort
