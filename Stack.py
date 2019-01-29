@@ -10,7 +10,6 @@ class Stack:
 
   def pop(self):
     return self.arr.pop()
-    
 
 if __name__ == '__main__':
   #test stack

@@ -10,11 +10,6 @@ class TreeNode:
     self.left = None
     self.right = None
 
-def construct(arr):
-  arr.sort()
-  head = _construct(arr, 0, len(arr)-1)
-  #printHead(head)
-
 def printHead(head):
   if not head:
     return
@@ -22,18 +17,20 @@ def printHead(head):
   printHead(head.left)
   printHead(head.right)
 
-def _construct(arr, l, r):
-  if l >= r:
-    print(l)
+def construct(arr, l, r):
+  if l > r:
     return None
 
-  mid = (l+r)/2
+  mid = (l+r)//2
   h = TreeNode(arr[mid])
-  h.left = _construct(arr, l, mid-1)
-  h.right = _construct(arr, mid+1, r)
+  h.left = construct(arr, l, mid-1)
+  h.right = construct(arr, mid+1, r)
   return h
 
 if __name__ == '__main__':
-  arr = [1,2,3,4,5,6,7,3,2,5]
-  construct(arr)
+  arr = [1,2,3,4,5]
+  h = construct(arr, 0, len(arr)-1)
+  printHead(h)
+
+
 

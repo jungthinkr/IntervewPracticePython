@@ -14,7 +14,6 @@ def isRotation(s1, s2):
     s = s1[i:]+s1[:i]
     if s == s2:
       return True
-
   return False
 
 
