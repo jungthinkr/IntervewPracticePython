@@ -10,13 +10,13 @@ class TreeNode:
         self.left = None
         self.right = None
 
-def construct(arr, idx):
-    if idx >= len(arr):
-        return
-
-    node = TreeNode(arr[idx])
-    node.left = construct(arr, idx+1)
-    node.right = construct(arr, idx+2)
+def construct(arr, l, r):
+    if l > r:
+        return None
+    mid = (l+r)/2
+    node = TreeNode(mid)
+    node.left = construct(arr, l, mid-1)
+    node.right = construct(arr, mid+1, r)
     return node
 
 def printTree(root):
@@ -28,7 +28,7 @@ def printTree(root):
 
 def constructLists(root):
     if not root:
-        return []
+        return [] 
     #queue FILO
     result = []
     q = [root]
@@ -39,15 +39,17 @@ def constructLists(root):
             r = q.pop(0)
             if r:
                 arr.append(r)
+                print(r.left, r.right)
                 children.append(r.left)
                 children.append(r.right)
         q.extend(children)
-        result.append(arr)
+        if len(arr) > 0:
+            result.append(arr)
     return result
 
 if __name__ == '__main__':
     arr = [1,2,3,4,5,6,7,8,9]
-    root = construct(arr, 0)
-    printTree(root)
-    #print(constructLists(root))
-
+    root = construct(arr, 0, len(arr)-1)
+    a = constructLists(root)
+    for level in a:
+         print(level)
