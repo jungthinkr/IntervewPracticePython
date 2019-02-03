@@ -25,7 +25,7 @@ class Graph:
     self.vertices[a] = []
 
   def getEdgesFromVertex(self, a):
-    return self.vertices.values()[a]
+    return self.vertices[a]
 
   def getNodes(self):
     return self.vertices.keys()
@@ -33,23 +33,25 @@ class Graph:
   def size(self):
     return len(self.vertices.values())
 
-def util(ptr, visited, stack, graph):
-  visited[ptr] = True
+def util(vertex, visited, stack, graph):
+  visited[vertex] = True
+  edges = graph.getEdgesFromVertex(vertex)
+  print(edges)
 
-  edges = graph.getEdgesFromVertex(ptr)
-  for i in range(len(edges)):
-    if not visited[i]:
-      util(i, visited, stack, graph)
-  stack.insert(0, graph.getNodes()[ptr])
+  for vertex in edges:
+    if not visited.get(vertex, False):
+      util(vertex, visited, stack, graph)
+
+  stack.append(vertex)
 
 #return arr
 def topSort(graph):
-  visited = [False]*graph.size()
+  visited = {}
   stack = []
 
-  for i in range(graph.size()):
-    if not visited[i]:
-      util(i, visited, stack, graph)
+  for vertex in graph.getNodes():
+    if not visited.get(vertex, False):
+      util(vertex, visited, stack, graph)
 
   print(stack)
   return stack
