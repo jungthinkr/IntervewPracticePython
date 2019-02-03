@@ -9,6 +9,20 @@ class TreeNode:
         self.val = val
         self.left = None
         self.right = None
+    def insert(self, val):
+      if self.val:
+        if val < self.val:
+          if not self.left:
+            self.left = TreeNode(val)
+          else:
+            self.left.insert(val)
+        elif val > self.val:
+          if not self.right:
+            self.right = TreeNode(val)
+          else:
+            self.right.insert(val)
+      else:
+        self.val = val
 
 def construct(arr, l, r):
     if l > r:

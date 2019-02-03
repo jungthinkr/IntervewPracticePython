@@ -9,6 +9,21 @@ class TreeNode:
         self.val = val
         self.left = None
         self.right = None
+    def insert(self, val):
+      if self.val:
+        if val < self.val:
+          if not self.left:
+            self.left = TreeNode(val)
+          else:
+            self.left.insert(val)
+        elif val > self.val:
+          if not self.right:
+            self.right = TreeNode(val)
+          else:
+            self.right.insert(val)
+      else:
+        self.val = val
+
 
 def construct(arr, l, r):
     if l > r:
@@ -51,5 +66,9 @@ if __name__ == '__main__':
     arr = [1,2,3,4,5,6,7,8,9]
     root = construct(arr, 0, len(arr)-1)
     a = constructLists(root)
+
     for level in a:
-         print(level)
+      printArr = []
+      for n in level:
+        printArr.append(n.val)
+      print(printArr)
