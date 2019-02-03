@@ -34,15 +34,16 @@ class Graph:
     return len(self.vertices.values())
 
 def util(vertex, visited, stack, graph):
+  if visited.get(vertex, False):
+    return
+
   visited[vertex] = True
   edges = graph.getEdgesFromVertex(vertex)
-  print(edges)
 
-  for vertex in edges:
-    if not visited.get(vertex, False):
-      util(vertex, visited, stack, graph)
+  for v in edges:
+    util(v, visited, stack, graph)
 
-  stack.append(vertex)
+  stack.insert(0, vertex)
 
 #return arr
 def topSort(graph):
@@ -50,8 +51,7 @@ def topSort(graph):
   stack = []
 
   for vertex in graph.getNodes():
-    if not visited.get(vertex, False):
-      util(vertex, visited, stack, graph)
+    util(vertex, visited, stack, graph)
 
   print(stack)
   return stack
@@ -73,5 +73,3 @@ if __name__ == '__main__':
   graph.addEdge('d', 'c')
 
   topSort(graph)
-  
-  
