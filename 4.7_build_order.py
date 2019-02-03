@@ -13,27 +13,30 @@ output: f,e,a,b,d,c
 
 class Graph:
   def __init__(self):
-    self.edges= {}
+    self.vertices= {}
 
   def addEdge(self, a, b):
-    if not self.edges.get(a):
-      self.edges[a] = [b]
+    if not self.vertices.get(a):
+      self.vertices[a] = [b]
     else:
-      self.edges[a].append(b)
+      self.vertices[a].append(b)
 
-  def getEdgesForNode(self, a):
-    return self.edges.values()[a]
+  def addVertex(self, a):
+    self.vertices[a] = []
+
+  def getEdgesFromVertex(self, a):
+    return self.vertices.values()[a]
 
   def getNodes(self):
-    return self.edges.keys()
-  
+    return self.vertices.keys()
+
   def size(self):
-    return len(self.edges.values())
+    return len(self.vertices.values())
 
 def util(ptr, visited, stack, graph):
   visited[ptr] = True
 
-  edges = graph.getEdgesForNode(ptr)
+  edges = graph.getEdgesFromVertex(ptr)
   for i in range(len(edges)):
     if not visited[i]:
       util(i, visited, stack, graph)
@@ -43,7 +46,7 @@ def util(ptr, visited, stack, graph):
 def topSort(graph):
   visited = [False]*graph.size()
   stack = []
-  
+
   for i in range(graph.size()):
     if not visited[i]:
       util(i, visited, stack, graph)
@@ -54,6 +57,13 @@ def topSort(graph):
 if __name__ == '__main__':
   #setup
   graph = Graph()
+  graph.addVertex('a')
+  graph.addVertex('b')
+  graph.addVertex('c')
+  graph.addVertex('d')
+  graph.addVertex('e')
+  graph.addVertex('f')
+
   graph.addEdge('a', 'd')
   graph.addEdge('f', 'b')
   graph.addEdge('b', 'd')
