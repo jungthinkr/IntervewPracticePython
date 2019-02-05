@@ -53,6 +53,6 @@ if __name__ == '__main__':
   head = construct(arr, 0, len(arr)-1)
   printTree(head)
   print('')
-  print(lca(head,2,3).val)
+  print(lca(head,2,4).val)
 
   
